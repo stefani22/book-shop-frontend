@@ -9,3 +9,12 @@ export interface Book {
     authorSurname: string | null;
     datePublished: string | null;
 }
+
+export interface CreateBookRequest {
+    name: string;
+    category: string;
+    authorId: number;
+    state: string;
+    datePublished: string;
+    availableCopies: number;
+}

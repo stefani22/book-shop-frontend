@@ -10,7 +10,6 @@ const useCountries = () => {
     const fetchCountries = useCallback(async () => {
         setLoading(true);
         setError(null);
-
         try {
             const response = await countryApi.findAll();
             setCountries(response.data);
@@ -21,11 +20,27 @@ const useCountries = () => {
         }
     }, []);
 
+    const onAdd = useCallback(async (data: Omit<Country, 'id'>) => {
+        await countryApi.add(data);
+        await fetchCountries();
+    }, [fetchCountries]);
+
+    const onEdit = useCallback(async (id: number, data: Omit<Country, 'id'>) => {
+        await countryApi.edit(id, data);
+        await fetchCountries();
+    }, [fetchCountries]);
+
+    const onDelete = useCallback(async (id: number) => {
+        await countryApi.delete(id);
+        await fetchCountries();
+    }, [fetchCountries]);
+
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         void fetchCountries();
     }, [fetchCountries]);
 
-    return { countries, loading, error };
+    return { countries, loading, error, onAdd, onEdit, onDelete };
 };
 
 export default useCountries;

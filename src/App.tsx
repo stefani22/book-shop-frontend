@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import Layout from './ui/components/layout/Layout/Layout.tsx';
 import ProtectedRoute from './ui/components/routing/ProtectedRoute/ProtectedRoute.tsx';
 import LoginPage from './ui/pages/auth/LoginPage/LoginPage.tsx';
+import RegisterPage from './ui/pages/auth/RegisterPage/RegisterPage.tsx';
 import HomePage from './ui/pages/home/HomePage/HomePage.tsx';
 import BooksPage from './ui/pages/books/BooksPage/BooksPage.tsx';
 import BookDetailsPage from './ui/pages/books/BookDetailsPage/BookDetailsPage.tsx';
@@ -15,6 +16,7 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route path='/login' element={<LoginPage/>}/>
+                <Route path='/register' element={<RegisterPage/>}/>
                 <Route path='/' element={<Layout/>}>
                     <Route element={<ProtectedRoute/>}>
                         <Route index element={<HomePage/>}/>

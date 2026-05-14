@@ -7,6 +7,15 @@ const countryApi = {
     },
     findById: (id: number) => {
         return axiosInstance.get<Country>(`/countries/${id}`);
+    },
+    add: (data: Omit<Country, 'id'>) => {
+        return axiosInstance.post<Country>('/countries/add', data);
+    },
+    edit: (id: number, data: Omit<Country, 'id'>) => {
+        return axiosInstance.put<Country>(`/countries/${id}/edit`, data);
+    },
+    delete: (id: number) => {
+        return axiosInstance.delete<Country>(`/countries/${id}/delete`);
     }
 };
 

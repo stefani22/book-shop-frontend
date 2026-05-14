@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Box, Button, Container, TextField, Typography, Alert } from '@mui/material';
+import { Link } from 'react-router';
 import useLogin from '../../../../hooks/useLogin.ts';
 
 const LoginPage = () => {
@@ -41,6 +42,12 @@ const LoginPage = () => {
                 >
                     {loading ? 'Logging in...' : 'Login'}
                 </Button>
+
+                <Typography sx={{ textAlign: 'center' }}>
+                    Don't have an account?{' '}
+                    <Link to='/register'>Register</Link>
+                </Typography>
+
             </Box>
         </Container>
     );

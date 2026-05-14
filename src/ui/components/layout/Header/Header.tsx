@@ -7,6 +7,7 @@ const pages = [
     { path: '/books', name: 'Books' },
     { path: '/authors', name: 'Authors' },
     { path: '/countries', name: 'Countries' },
+    { path: '/wishlist', name: 'Wishlist' },
 ];
 
 const Header = () => {

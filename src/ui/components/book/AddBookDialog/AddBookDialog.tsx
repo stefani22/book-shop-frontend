@@ -19,7 +19,7 @@ const AddBookDialog = ({ open, onClose, onAdd }: Props) => {
         await onAdd({
             name,
             category,
-            state: 'AVAILABLE',
+            state: 'GOOD',
             availableCopies: Number(availableCopies),
             authorId: Number(authorId),
             datePublished,

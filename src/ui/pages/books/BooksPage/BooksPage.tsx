@@ -3,6 +3,7 @@ import { Box, Button, Card, CardActionArea, CardActions, CardContent, CircularPr
 import { useNavigate } from 'react-router';
 import useBooks from '../../../../hooks/useBooks.ts';
 import useAuth from '../../../../hooks/useAuth.ts';
+import useWishlist from '../../../../hooks/useWishList.ts';
 import type { Book } from '../../../../api/types/book.ts';
 import AddBookDialog from '../../../components/book/AddBookDialog/AddBookDialog.tsx';
 import EditBookDialog from '../../../components/book/EditBookDialog/EditBookDialog.tsx';
@@ -11,6 +12,7 @@ import DeleteBookDialog from '../../../components/book/DeleteBookDialog/DeleteBo
 const BooksPage = () => {
     const { books, loading, error, onAdd, onEdit, onDelete } = useBooks();
     const { isAdmin } = useAuth();
+    const { onAdd: addToWishlist } = useWishlist();
     const navigate = useNavigate();
 
     const [addOpen, setAddOpen] = useState(false);
@@ -47,16 +49,21 @@ const BooksPage = () => {
                                     <Typography>Available copies: {book.availableCopies}</Typography>
                                 </CardContent>
                             </CardActionArea>
-                            {isAdmin && (
-                                <CardActions>
-                                    <Button size='small' onClick={() => { setSelected(book); setEditOpen(true); }}>
-                                        Edit
-                                    </Button>
-                                    <Button size='small' color='error' onClick={() => { setSelected(book); setDeleteOpen(true); }}>
-                                        Delete
-                                    </Button>
-                                </CardActions>
-                            )}
+                            <CardActions>
+                                <Button size='small' onClick={() => addToWishlist(book.id)}>
+                                    + Wishlist
+                                </Button>
+                                {isAdmin && (
+                                    <>
+                                        <Button size='small' onClick={() => { setSelected(book); setEditOpen(true); }}>
+                                            Edit
+                                        </Button>
+                                        <Button size='small' color='error' onClick={() => { setSelected(book); setDeleteOpen(true); }}>
+                                            Delete
+                                        </Button>
+                                    </>
+                                )}
+                            </CardActions>
                         </Card>
                     </Grid>
                 ))}

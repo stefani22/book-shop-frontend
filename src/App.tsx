@@ -10,7 +10,7 @@ import AuthorsPage from './ui/pages/authors/AuthorsPage/AuthorsPage.tsx';
 import AuthorDetailsPage from './ui/pages/authors/AuthorDetailsPage/AuthorDetailsPage.tsx';
 import CountriesPage from './ui/pages/countries/CountriesPage/CountriesPage.tsx';
 import CountryDetailsPage from './ui/pages/countries/CountryDetailsPage/CountryDetailsPage.tsx';
-
+import WishlistPage from './ui/pages/wishlist/WishlistPage/WishlistPage.tsx';
 const App = () => {
     return (
         <BrowserRouter>
@@ -26,6 +26,7 @@ const App = () => {
                         <Route path='authors/:id' element={<AuthorDetailsPage/>}/>
                         <Route path='countries' element={<CountriesPage/>}/>
                         <Route path='countries/:id' element={<CountryDetailsPage/>}/>
+                        <Route path='wishlist' element={<WishlistPage/>}/>
                     </Route>
                 </Route>
             </Routes>

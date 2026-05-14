@@ -14,7 +14,7 @@ const Footer = () => {
             }}
         >
             <Typography variant='body2'>
-                © {new Date().getFullYear()} BookShop. All rights reserved.
+                © {new Date().getFullYear()} BookShop
             </Typography>
         </Box>
     );
